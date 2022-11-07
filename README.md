@@ -18,6 +18,7 @@ replacement.
 * [Testing](#-testing)
   * [Test package](#test-package)
   * [Assertions](#assertions)
+* [See also](#-see-also)
 
 ## 🕶 Style
 
@@ -144,6 +145,11 @@ func TestFoo(t *testing.T) {
 	assert.Equal[E](t, foo.Foo(), want)
 }
 ```
+
+## 👀 See also
+
+* https://github.com/cristaloleg/go-advice
+* https://github.com/bahlo/go-styleguide
 
 [1]: https://go.dev/doc/effective_go
 [2]: https://github.com/golang/go/wiki/CodeReviewComments
