@@ -10,6 +10,7 @@ replacement.
 
 * [Style](#-style)
   * [Variable declaration](#variable-declaration)
+  * [Variable initialization](#variable-initialization)
 * [Structure](#-structure)
 * [Testing](#-testing)
 
@@ -32,6 +33,22 @@ replacer := strings.NewReplacer(...)
 
 ⚠️ One exception may be writing `flag := false` instead of `var flag bool`
 because the former reads better.
+
+### Variable initialization
+
+By default, initialize your variables with values, not pointers. When you need a
+pointer, explicitly take the address via `&`.
+
+> This way there is no need to remember what a variable holds, no matter how big
+> its scope.
+
+```go
+cfg := config{...} // NOT cfg := &config{...}
+
+// 100+ LoC later...
+
+fn(&cfg) // cfg is 100% a value, no need to revisit its declaration.
+```
 
 ## 🧱 Structure
 
