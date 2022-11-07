@@ -17,6 +17,7 @@ replacement.
   * [Interface segregation](#interface-segregation)
 * [Testing](#-testing)
   * [Test package](#test-package)
+  * [Assertions](#assertions)
 
 ## 🕶 Style
 
@@ -124,8 +125,29 @@ func TestFoo(t *testing.T) {
 }
 ```
 
+### Assertions
+
+Use testing helpers or an assert package (e.g. [junk1tm/assert][6]) when you
+need to write a lot of tests.
+
+> Sticking to the standard library is great but sometimes vanilla `testing` is
+> too verbose.
+
+```go
+func TestFoo(t *testing.T) {
+	// ok for small tests, too verbose for bigger ones.
+	if got := foo.Foo(); got != want {
+		t.Errorf("got %v; want %v", got, want)
+	}
+
+	// less LoC, reads better, behaves the same.
+	assert.Equal[E](t, foo.Foo(), want)
+}
+```
+
 [1]: https://go.dev/doc/effective_go
 [2]: https://github.com/golang/go/wiki/CodeReviewComments
 [3]: https://github.com/uber-go/guide/blob/master/style.md
 [4]: https://en.wikipedia.org/wiki/Interface_segregation_principle
 [5]: https://en.wikipedia.org/wiki/Eating_your_own_dog_food
+[6]: https://github.com/junk1tm/assert
