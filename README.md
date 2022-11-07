@@ -13,6 +13,7 @@ replacement.
   * [Variable initialization](#variable-initialization)
   * [Error prefixes](#error-prefixes)
 * [Structure](#-structure)
+  * [Project layout](#project-layout)
 * [Testing](#-testing)
 
 ## 🕶 Style
@@ -64,6 +65,14 @@ var ErrFoo = errors.New("foo: something went wrong")
 ```
 
 ## 🧱 Structure
+
+### Project layout
+
+Avoid `pkg` in libraries. Avoid `pkg`/`internal` in applications.
+
+> Any package in a library should be treated as importable (except for
+> `internal/*`). Any package in an application should be treated as
+> non-importable.
 
 ## 🧪 Testing
 
