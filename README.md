@@ -14,6 +14,7 @@ replacement.
   * [Error prefixes](#error-prefixes)
 * [Structure](#-structure)
   * [Project layout](#project-layout)
+  * [Interface segregation](#interface-segregation)
 * [Testing](#-testing)
 
 ## 🕶 Style
@@ -74,8 +75,37 @@ Avoid `pkg` in libraries. Avoid `pkg`/`internal` in applications.
 > `internal/*`). Any package in an application should be treated as
 > non-importable.
 
+### Interface segregation
+
+Prefer [smaller interfaces][4] when possible. Remove unused interface methods on
+the consumer's side.
+
+> A little copying is better than a little dependency.
+
+```go
+// Package foo is a producer.
+package foo
+
+type Foo struct {}
+
+func (Foo) DoA() {}
+func (Foo) DoB() {}
+
+// Package bar is a consumer.
+package bar
+
+type A interface {
+	DoA()
+	// DoB() is obsolete here.
+}
+
+// Bar only uses DoA(), no need to require DoB() in the interface.
+func Bar(a A) { a.DoA() }
+```
+
 ## 🧪 Testing
 
 [1]: https://go.dev/doc/effective_go
 [2]: https://github.com/golang/go/wiki/CodeReviewComments
 [3]: https://github.com/uber-go/guide/blob/master/style.md
+[4]: https://en.wikipedia.org/wiki/Interface_segregation_principle
