@@ -11,6 +11,7 @@ replacement.
 * [Style](#-style)
   * [Variable declaration](#variable-declaration)
   * [Variable initialization](#variable-initialization)
+  * [Error prefixes](#error-prefixes)
 * [Structure](#-structure)
 * [Testing](#-testing)
 
@@ -48,6 +49,18 @@ cfg := config{...} // NOT cfg := &config{...}
 // 100+ LoC later...
 
 fn(&cfg) // cfg is 100% a value, no need to revisit its declaration.
+```
+
+### Error prefixes
+
+Prefix errors with the name of their package.
+
+> It helps to quickly identify the producer of the error.
+
+```go
+package foo
+
+var ErrFoo = errors.New("foo: something went wrong")
 ```
 
 ## 🧱 Structure
