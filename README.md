@@ -16,6 +16,7 @@ replacement.
   * [Project layout](#project-layout)
   * [Interface segregation](#interface-segregation)
 * [Testing](#-testing)
+  * [Test package](#test-package)
 
 ## 🕶 Style
 
@@ -105,7 +106,26 @@ func Bar(a A) { a.DoA() }
 
 ## 🧪 Testing
 
+### Test package
+
+Prefer a separate package for tests. If you need to test unexported functions,
+do it in a separate `*_internal_test.go` file.
+
+> By doing so you become the first user of your API, [dogfooding][5] helps to
+> design it better.
+
+```go
+package foo_test // NOT foo
+
+import "foo"
+
+func TestFoo(t *testing.T) {
+	foo.Foo() // try the API from a user's perspective while writing tests.
+}
+```
+
 [1]: https://go.dev/doc/effective_go
 [2]: https://github.com/golang/go/wiki/CodeReviewComments
 [3]: https://github.com/uber-go/guide/blob/master/style.md
 [4]: https://en.wikipedia.org/wiki/Interface_segregation_principle
+[5]: https://en.wikipedia.org/wiki/Eating_your_own_dog_food
