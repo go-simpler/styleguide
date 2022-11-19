@@ -14,6 +14,7 @@ replacement.
   * [Error prefixes](#error-prefixes)
 * [Structure](#-structure)
   * [Project layout](#project-layout)
+  * [Panicking](#panicking)
   * [Interface segregation](#interface-segregation)
 * [Testing](#-testing)
   * [Test package](#test-package)
@@ -76,6 +77,15 @@ Avoid `pkg` in libraries. Avoid `pkg`/`internal` in applications.
 > Any package in a library should be treated as importable (except for
 > `internal/*`). Any package in an application should be treated as
 > non-importable.
+
+### Panicking
+
+It's ok to panic if the problem is caused by incorrect usage of the library, not
+by user input (e.g. passing an odd number of arguments to a function that
+expects pairs).
+
+> Better to fall faster and louder if we're absolutely sure that the program is
+> not working correctly.
 
 ### Interface segregation
 
