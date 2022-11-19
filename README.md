@@ -1,8 +1,8 @@
-# Go Style Guide
+# styleguide
 
-> An opinionated style guide for Go
+A Go styleguide for the `go-simpler` organisation.
 
-This guide should be treated as an extension to [Effective Go][1],
+It should be treated as an extension to [Effective Go][1],
 [Go Code Review Comments][2] and [Uber Go Style Guide][3], not their
 replacement.
 
@@ -18,7 +18,6 @@ replacement.
 * [Testing](#-testing)
   * [Test package](#test-package)
   * [Assertions](#assertions)
-* [See also](#-see-also)
 
 ## 🕶 Style
 
@@ -128,7 +127,7 @@ func TestFoo(t *testing.T) {
 
 ### Assertions
 
-Use testing helpers or an assert package (e.g. [junk1tm/assert][6]) when you
+Use testing helpers or an assert package (e.g. [go-simpler/assert][6]) when you
 need to write a lot of tests.
 
 > Sticking to the standard library is great but sometimes vanilla `testing` is
@@ -146,14 +145,9 @@ func TestFoo(t *testing.T) {
 }
 ```
 
-## 👀 See also
-
-* https://github.com/cristaloleg/go-advice
-* https://github.com/bahlo/go-styleguide
-
 [1]: https://go.dev/doc/effective_go
 [2]: https://github.com/golang/go/wiki/CodeReviewComments
 [3]: https://github.com/uber-go/guide/blob/master/style.md
 [4]: https://en.wikipedia.org/wiki/Interface_segregation_principle
 [5]: https://en.wikipedia.org/wiki/Eating_your_own_dog_food
-[6]: https://github.com/junk1tm/assert
+[6]: https://github.com/go-simpler/assert
