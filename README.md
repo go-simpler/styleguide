@@ -1,6 +1,6 @@
 # styleguide
 
-A styleguide for the `go-simpler` organisation.
+A styleguide for the `go-simpler` organization.
 
 It should be treated as an extension to [Effective Go][1], [Go Code Review Comments][2] and [Uber Go Style Guide][3].
 
@@ -91,14 +91,14 @@ package foo_test // NOT foo
 import "foo"
 
 func TestFoo(t *testing.T) {
-	foo.Foo()
+    foo.Foo()
 }
 
 // foo_internal_test.go
 package foo
 
 func Test_foo(t *testing.T) {
-	foo()
+    foo()
 }
 ```
 
@@ -110,14 +110,14 @@ Use testing helpers or an assertion package (e.g. [go-simpler/assert][5]) when y
 
 ```go
 func TestFoo(t *testing.T) {
-	// too verbose for big tests.
-	if got := foo.Foo(); got != want {
-		t.Errorf("got %v; want %v", got, want)
-	}
+    // too verbose for big tests.
+    if got := foo.Foo(); got != want {
+        t.Errorf("got %v; want %v", got, want)
+    }
 
-	// less LoC, reads better, behaves the same.
-	got := foo.Foo()
-	assert.Equal[E](t, got, want)
+    // less LoC, reads better, behaves the same.
+    got := foo.Foo()
+    assert.Equal[E](t, got, want)
 }
 ```
 
