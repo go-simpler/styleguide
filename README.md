@@ -15,6 +15,7 @@ It should be treated as an extension to [Effective Go][1], [Go Code Review Comme
 * [Testing](#testing)
   * [Test package](#test-package)
   * [Assertions](#assertions)
+* [Documentation](#documentation)
 * [Project layout](#project-layout)
 * [Interface segregation](#interface-segregation)
 
@@ -121,6 +122,14 @@ func TestFoo(t *testing.T) {
 }
 ```
 
+## Documentation
+
+When writing [doc comments][6], do not wrap the text.
+Instead, prefer one sentence per line.
+
+> Git diffs are much smaller this way.
+> See [semantic linefeeds][7] for the rational.
+
 ## Project layout
 
 Avoid using `pkg`.
@@ -131,7 +140,7 @@ Treat any non-internal package as importable.
 
 ## Interface segregation
 
-Prefer [smaller interfaces][6] when possible.
+Prefer [smaller interfaces][8] when possible.
 Remove unused interface methods on the consumer's side.
 
 > A little copying is better than a little dependency.
@@ -161,4 +170,6 @@ func F(i I) { i.Foo() } // F only uses Foo(), it does not need Bar().
 [3]: https://github.com/uber-go/guide/blob/master/style.md
 [4]: https://en.wikipedia.org/wiki/Eating_your_own_dog_food
 [5]: https://github.com/go-simpler/assert
-[6]: https://en.wikipedia.org/wiki/Interface_segregation_principle
+[6]: https://go.dev/doc/comment
+[7]: https://rhodesmill.org/brandon/2012/one-sentence-per-line
+[8]: https://en.wikipedia.org/wiki/Interface_segregation_principle
